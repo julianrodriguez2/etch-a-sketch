@@ -1,5 +1,11 @@
 const gridContainer = document.getElementById("grid-container");
 const squareButton = document.getElementById('square-button');
+var newColor = document.getElementById("colorpicker").value;
+
+document.getElementById("colorpicker").onchange = function() {
+    newColor = this.value;
+    console.log(newColor);
+  }
 
 let mouseDown = false;
 
@@ -32,7 +38,7 @@ function createGrid(number) {
 }
 
 function changeColor(e) {
-    e.target.style.backgroundColor = "black";
+    e.target.style.backgroundColor = newColor;
 }
 
 squareButton.addEventListener('click', function() {
