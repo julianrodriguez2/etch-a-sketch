@@ -1,19 +1,24 @@
 const gridContainer = document.getElementById("grid-container");
 const squareButton = document.getElementById('square-button');
-var newColor = document.getElementById("colorpicker").value;
+const clearButton = document.getElementById('clear-button');
+const eraserButton = document.getElementById('eraser-button');
+const colorPicker = document.getElementById('colorpicker');
 
-document.getElementById("colorpicker").onchange = function() {
-    newColor = this.value;
-    console.log(newColor);
-  }
-
+let newColor = document.getElementById("colorpicker").value;
+let currSize = 0;
 let mouseDown = false;
+
+
+colorPicker.addEventListener('input', (e) => {
+    newColor = e.target.value;
+});
 
 // We use these events on the document to ensure that mouseDown status is accurate
 document.addEventListener('mousedown', () => { mouseDown = true; });
 document.addEventListener('mouseup', () => { mouseDown = false; });
 
 function createGrid(number) {
+    currSize = number;
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
     }
@@ -48,6 +53,14 @@ squareButton.addEventListener('click', function() {
         return;
     }
     createGrid(gridSize);
+});
+
+eraserButton.addEventListener('click', function(){
+    newColor = 'white';
+});
+
+clearButton.addEventListener('click', function() {
+    createGrid(currSize);
 });
 
 window.onload = function() {
