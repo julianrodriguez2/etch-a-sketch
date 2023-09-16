@@ -1,11 +1,96 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --classic-red: #D62828; 
+    --modern-gray: #C2C4C6; 
+    --cool-blue: #3D5A80; 
+    --neutral-white: #F8F9FA;
+    --dark-gray: #333;
+}
+
+body {
+    background-color: var(--neutral-white);
+    color: var(--dark-gray);
+    display: flex;
+    flex-direction: column;  /* Stack children vertically */
+    min-height: 100vh;       /* Use at least full viewport height */
+}
+
+.content {
+    flex: 1;                 /* Allows this element to stretch and consume available space */
+}
+
+/* No changes needed for the footer */
+
+
+h1 {
+    color: var(--classic-red);
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: var(--cool-blue);
+    color: var(--neutral-white);
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--dark-gray);
+}
+
+.etch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
 #grid-container {
-    width: 1000px;
-    height: 1000px;
+    width: 75vh;
+    height: 75vh;
     display: grid;
     border: 20px solid black;
+    border-color: var(--classic-red);
 }   
 
 .grid {
-    background-color: white;
-    border-color: blue;
+    background-color: var(--neutral-white);
+    border-color: var(--modern-gray);
+}
+
+.footer {
+    background-color: var(--modern-gray);
+    color: var(--dark-gray);
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #ccc;
+    position: relative;
+}
+
+.footer-content {
+    margin-top: 20px;
+}
+
+.footer a {
+    margin: 0 5px; 
+    color: var(--cool-blue);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--classic-red);
 }
