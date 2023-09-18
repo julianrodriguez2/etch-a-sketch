@@ -20,7 +20,7 @@ body {
 }
 
 .grid-lines {
-    border: 1px solid #333;  /* Adjust the color and thickness as desired */
+    border: 1px solid #333;
 }
 
 .content {
@@ -30,16 +30,18 @@ body {
 h1 {
     color: var(--classic-red);
     text-align: center;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 button {
     background-color: var(--cool-blue);
     color: var(--neutral-white);
     border: none;
-    padding: 8px 15px;
+    padding: 10px 40px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 5px 0;
+    border-radius: 10px;
 }
 
 button:hover {
@@ -50,17 +52,22 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
 }
 
 .button-container {
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
 #grid-container {
-    width: 75vh;
-    height: 75vh;
+    max-width: 75vh;
+    max-height: 75vh;
+    width: 90vw;
+    height: 90vw;
     display: grid;
     border: 20px solid black;
     border-color: var(--classic-red);
@@ -94,4 +101,29 @@ button:hover {
 
 .footer a:hover {
     color: var(--classic-red);
+}
+
+@media screen and (min-width: 768px) {
+    /* Adjustments for tablets and larger screens */
+
+    .button-container {
+        padding: 30px; /* Increased padding for larger screens */
+        margin-bottom: 0; /* Reset margin */
+    }
+    #grid-container {
+        width: 75vh;
+        height: 75vh;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    /* Adjustments for desktop screens */
+
+    .etch-container {
+        flex-wrap: nowrap; /* Prevents wrapping for larger screens */
+    }
+
+    .button-container {
+        margin-right: 40px; /* Space between button-container and grid-container */
+    }
 }
