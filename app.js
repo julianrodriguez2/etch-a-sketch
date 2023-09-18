@@ -13,7 +13,6 @@ colorPicker.addEventListener('input', (e) => {
     newColor = e.target.value;
 });
 
-// We use these events on the document to ensure that mouseDown status is accurate
 document.addEventListener('mousedown', () => { mouseDown = true; });
 document.addEventListener('mouseup', () => { mouseDown = false; });
 
@@ -30,11 +29,15 @@ function createGrid(number) {
         const gridSquare = document.createElement("div");
         gridSquare.classList.add("grid");
 
+        if (showGridLines) {
+            gridSquare.classList.add('grid-lines');
+        }
+
         gridSquare.addEventListener('mouseenter', function(e) {
             if (mouseDown) changeColor(e);
         });
         gridSquare.addEventListener('mousedown', function(e) {
-            e.preventDefault();  // Prevent the default drag-and-drop behavior
+            e.preventDefault();
             changeColor(e);
         });
 
@@ -56,12 +59,38 @@ squareButton.addEventListener('click', function() {
 });
 
 eraserButton.addEventListener('click', function(){
-    newColor = 'white';
+    newColor = '#F8F9FA';
 });
 
 clearButton.addEventListener('click', function() {
     createGrid(currSize);
 });
+
+const lineButton = document.getElementById('line-button');
+let showGridLines = false;
+
+lineButton.addEventListener('click', function() {
+    toggleGridLines();
+});
+
+function toggleGridLines() {
+    const gridElements = document.querySelectorAll('.grid');
+    
+    if (showGridLines) {
+        gridElements.forEach(element => {
+            element.classList.remove('grid-lines');
+        });
+        showGridLines = false;
+        lineButton.textContent = "Show Grid Lines";
+    } else {
+        gridElements.forEach(element => {
+            element.classList.add('grid-lines');
+        });
+        showGridLines = true;
+        lineButton.textContent = "Hide Grid Lines";
+    }
+}
+
 
 window.onload = function() {
     createGrid(16);
